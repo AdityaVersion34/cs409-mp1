@@ -29,3 +29,29 @@ document.querySelectorAll('.navbar button').forEach(button => {
     }
   });
 });
+
+
+// Carousel stuff
+
+// JavaScript
+const carouselImages = document.querySelector('.carousel-images');
+const images = document.querySelectorAll('.carousel-images img');
+const leftBtn = document.querySelector('.carousel-button.left');
+const rightBtn = document.querySelector('.carousel-button.right');
+
+let currentIndex = 0;
+
+function updateCarousel() {
+  const width = images[0].clientWidth;
+  carouselImages.style.transform = `translateX(-${currentIndex * width}px)`;
+}
+
+leftBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+  updateCarousel();
+});
+
+rightBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+  updateCarousel();
+});
