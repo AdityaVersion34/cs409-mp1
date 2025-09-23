@@ -1,1 +1,42 @@
 /* Your SCSS here. */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  z-index: 1000;
+  transition: padding 0.3s ease;
+}
+
+.navbar.collapsed {
+  padding: 0.5rem 1rem;  // less vertical padding when collapsed
+}
+
+.navbar button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+
+  &:hover {
+    background-color: #555;
+  }
+}
+
+.animal-section {
+  padding: 100px 20px;
+  margin-top: 60px; // to avoid content hidden by fixed navbar
+  border-bottom: 1px solid #ccc;
+}
