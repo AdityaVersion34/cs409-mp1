@@ -154,3 +154,33 @@ body {
   cursor: pointer;
 }
 
+// video and background image stuff
+
+#section-bird {
+  background-image: url('../assets/background_forest.jpg'); // Replace with your image path
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  color: white; // adjust for contrast over background
+  padding: 100px 20px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#section-bird .video-wrapper {
+  width: 560px;  // match iframe width
+  height: 315px; // match iframe height
+  display: flex;
+  justify-content: center;
+  align-items: center; // vertical + horizontal center
+  margin-top: 20px;
+}
+
+#section-bird iframe {
+  border: none;
+  display: block;
+  max-width: 100%;
+}
