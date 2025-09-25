@@ -100,20 +100,62 @@ const modal = document.getElementById('imgmodal-modal');
 const modalDesc = document.getElementById('imgmodal-modalDesc');
 const closeBtn = document.getElementById('imgmodal-closeBtn');
 
+function showModal(desc) {
+  modalDesc.textContent = desc;
+  modal.style.display = 'flex';       // Show the modal container
+  modal.classList.remove('fade-out');
+  modal.classList.add('fade-in');
+}
+
+function hideModal() {
+  modal.classList.remove('fade-in');
+  modal.classList.add('fade-out');
+}
+
+// photos.forEach(photo => {
+//   photo.addEventListener('click', () => {
+//     const desc = photo.getAttribute('data-desc');
+//     modalDesc.textContent = desc;
+//     modal.style.display = 'flex';
+//   });
+// });
+
+// closeBtn.addEventListener('click', () => {
+//   modal.style.display = 'none';
+// });
+
+// modal.addEventListener('click', (e) => {
+//   if (e.target === modal) {
+//     modal.style.display = 'none';
+//   }
+// });
+
+// Show modal on photo click
 photos.forEach(photo => {
   photo.addEventListener('click', () => {
-    const desc = photo.getAttribute('data-desc');
-    modalDesc.textContent = desc;
-    modal.style.display = 'flex';
+    showModal(photo.getAttribute('data-desc'));
   });
 });
 
+// Hide modal on close click
 closeBtn.addEventListener('click', () => {
-  modal.style.display = 'none';
+  hideModal();
 });
 
+// Hide modal on clicking outside image/modal content
 modal.addEventListener('click', (e) => {
   if (e.target === modal) {
-    modal.style.display = 'none';
+    hideModal();
+  }
+});
+
+// After fade out animation completes, hide modal from view
+modal.addEventListener('animationend', () => {
+  if (modal.classList.contains('fade-out')) {
+    modal.classList.remove('fade-out');
+    modal.style.display = 'none';    // Hide modal container here
+    modal.style.pointerEvents = 'none';
+  } else {
+    modal.style.pointerEvents = 'auto';
   }
 });
